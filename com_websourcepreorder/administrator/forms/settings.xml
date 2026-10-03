@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="general" label="COM_WEBSOURCEPREORDER_TAB_GENERAL">
+		<field name="admin_email" type="email" label="COM_WEBSOURCEPREORDER_SET_ADMIN_EMAIL" description="COM_WEBSOURCEPREORDER_SET_ADMIN_EMAIL_DESC" default="" validate="email" filter="string" />
+		<field name="mail_order_on" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_MAIL_ORDER_ON" description="COM_WEBSOURCEPREORDER_SET_MAIL_ORDER_ON_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="mail_admin_on" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_MAIL_ADMIN_ON" description="COM_WEBSOURCEPREORDER_SET_MAIL_ADMIN_ON_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="mail_available_on" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_MAIL_AVAILABLE_ON" description="COM_WEBSOURCEPREORDER_SET_MAIL_AVAILABLE_ON_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="mixed_cart" type="list" label="COM_WEBSOURCEPREORDER_SET_MIXED_CART" description="COM_WEBSOURCEPREORDER_SET_MIXED_CART_DESC" default="allow">
+			<option value="allow">COM_WEBSOURCEPREORDER_OPT_MIXED_CART_ALLOW</option>
+			<option value="forbid">COM_WEBSOURCEPREORDER_OPT_MIXED_CART_FORBID</option>
+		</field>
+		<field name="lazy_sync" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_LAZY_SYNC" description="COM_WEBSOURCEPREORDER_SET_LAZY_SYNC_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="btn_label" type="text" label="COM_WEBSOURCEPREORDER_SET_BTN_LABEL" description="COM_WEBSOURCEPREORDER_SET_BTN_LABEL_DESC" default="" filter="string" />
+		<field name="badge_label" type="text" label="COM_WEBSOURCEPREORDER_SET_BADGE_LABEL" description="COM_WEBSOURCEPREORDER_SET_BADGE_LABEL_DESC" default="" filter="string" />
+		<field name="show_flag" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_SHOW_FLAG" description="COM_WEBSOURCEPREORDER_SET_SHOW_FLAG_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="show_cart_notice" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_SHOW_CART_NOTICE" description="COM_WEBSOURCEPREORDER_SET_SHOW_CART_NOTICE_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="cancel_statuses" type="text" label="COM_WEBSOURCEPREORDER_SET_CANCEL_STATUSES" description="COM_WEBSOURCEPREORDER_SET_CANCEL_STATUSES_DESC" default="cancelled,refunded" filter="string" />
+		<field name="unpaid_release_hours" type="number" label="COM_WEBSOURCEPREORDER_SET_UNPAID_RELEASE_HOURS" description="COM_WEBSOURCEPREORDER_SET_UNPAID_RELEASE_HOURS_DESC" default="0" min="0" step="1" filter="integer" />
+		<field name="site_url" type="url" label="COM_WEBSOURCEPREORDER_SET_SITE_URL" description="COM_WEBSOURCEPREORDER_SET_SITE_URL_DESC" default="" filter="url" />
+		<field name="keep_data" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_KEEP_DATA" description="COM_WEBSOURCEPREORDER_SET_KEEP_DATA_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+	<fieldset name="counter" label="COM_WEBSOURCEPREORDER_TAB_COUNTER">
+		<field name="show_countdown" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_SHOW_COUNTDOWN" description="COM_WEBSOURCEPREORDER_SET_SHOW_COUNTDOWN_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="show_progress" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_SHOW_PROGRESS" description="COM_WEBSOURCEPREORDER_SET_SHOW_PROGRESS_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="show_quota" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_SHOW_QUOTA" description="COM_WEBSOURCEPREORDER_SET_SHOW_QUOTA_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="countdown_mode" type="list" label="COM_WEBSOURCEPREORDER_SET_COUNTDOWN_MODE" description="COM_WEBSOURCEPREORDER_SET_COUNTDOWN_MODE_DESC" default="auto">
+			<option value="auto">COM_WEBSOURCEPREORDER_OPT_COUNTDOWN_MODE_AUTO</option>
+			<option value="d">COM_WEBSOURCEPREORDER_OPT_COUNTDOWN_MODE_D</option>
+			<option value="dh">COM_WEBSOURCEPREORDER_OPT_COUNTDOWN_MODE_DH</option>
+			<option value="dhm">COM_WEBSOURCEPREORDER_OPT_COUNTDOWN_MODE_DHM</option>
+			<option value="dhms">COM_WEBSOURCEPREORDER_OPT_COUNTDOWN_MODE_DHMS</option>
+		</field>
+	</fieldset>
+	<fieldset name="colors" label="COM_WEBSOURCEPREORDER_TAB_COLORS">
+		<field name="c_accent" type="color" label="COM_WEBSOURCEPREORDER_SET_C_ACCENT" description="COM_WEBSOURCEPREORDER_SET_C_ACCENT_DESC" default="#e8590c" format="hex" keywords="" filter="color" />
+		<field name="c_on_accent" type="color" label="COM_WEBSOURCEPREORDER_SET_C_ON_ACCENT" description="COM_WEBSOURCEPREORDER_SET_C_ON_ACCENT_DESC" default="#ffffff" format="hex" keywords="" filter="color" />
+		<field name="c_box_bg" type="color" label="COM_WEBSOURCEPREORDER_SET_C_BOX_BG" description="COM_WEBSOURCEPREORDER_SET_C_BOX_BG_DESC" default="#fff7ed" format="hex" keywords="" filter="color" />
+		<field name="c_border" type="color" label="COM_WEBSOURCEPREORDER_SET_C_BORDER" description="COM_WEBSOURCEPREORDER_SET_C_BORDER_DESC" default="#fdba74" format="hex" keywords="" filter="color" />
+		<field name="c_count_bg" type="color" label="COM_WEBSOURCEPREORDER_SET_C_COUNT_BG" description="COM_WEBSOURCEPREORDER_SET_C_COUNT_BG_DESC" default="#1f2937" format="hex" keywords="" filter="color" />
+		<field name="c_count_text" type="color" label="COM_WEBSOURCEPREORDER_SET_C_COUNT_TEXT" description="COM_WEBSOURCEPREORDER_SET_C_COUNT_TEXT_DESC" default="#ffffff" format="hex" keywords="" filter="color" />
+		<field name="c_badge_bg" type="color" label="COM_WEBSOURCEPREORDER_SET_C_BADGE_BG" description="COM_WEBSOURCEPREORDER_SET_C_BADGE_BG_DESC" default="#e8590c" format="hex" keywords="" filter="color" />
+		<field name="c_ticker_bg" type="color" label="COM_WEBSOURCEPREORDER_SET_C_TICKER_BG" description="COM_WEBSOURCEPREORDER_SET_C_TICKER_BG_DESC" default="#1f2937" format="hex" keywords="" filter="color" />
+		<field name="c_ticker_text" type="color" label="COM_WEBSOURCEPREORDER_SET_C_TICKER_TEXT" description="COM_WEBSOURCEPREORDER_SET_C_TICKER_TEXT_DESC" default="#ffffff" format="hex" keywords="" filter="color" />
+	</fieldset>
+	<fieldset name="home" label="COM_WEBSOURCEPREORDER_TAB_HOME">
+		<field name="featured_title" type="text" label="COM_WEBSOURCEPREORDER_SET_FEATURED_TITLE" description="COM_WEBSOURCEPREORDER_SET_FEATURED_TITLE_DESC" default="" filter="string" />
+		<field name="featured_cta" type="text" label="COM_WEBSOURCEPREORDER_SET_FEATURED_CTA" description="COM_WEBSOURCEPREORDER_SET_FEATURED_CTA_DESC" default="" filter="string" />
+		<field name="ticker_prefix" type="text" label="COM_WEBSOURCEPREORDER_SET_TICKER_PREFIX" description="COM_WEBSOURCEPREORDER_SET_TICKER_PREFIX_DESC" default="" filter="string" />
+		<field name="ticker_speed" type="number" label="COM_WEBSOURCEPREORDER_SET_TICKER_SPEED" description="COM_WEBSOURCEPREORDER_SET_TICKER_SPEED_DESC" default="40" min="5" max="600" step="1" filter="integer" />
+		<field name="ticker_max" type="number" label="COM_WEBSOURCEPREORDER_SET_TICKER_MAX" description="COM_WEBSOURCEPREORDER_SET_TICKER_MAX_DESC" default="10" min="1" max="50" step="1" filter="integer" />
+	</fieldset>
+	<fieldset name="accounts" label="COM_WEBSOURCEPREORDER_TAB_ACCOUNTS">
+		<field name="blk_login" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_BLK_LOGIN" description="COM_WEBSOURCEPREORDER_SET_BLK_LOGIN_DESC" default="0" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="blk_register" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_BLK_REGISTER" description="COM_WEBSOURCEPREORDER_SET_BLK_REGISTER_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="blk_reset" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_BLK_RESET" description="COM_WEBSOURCEPREORDER_SET_BLK_RESET_DESC" default="0" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="blk_products" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_BLK_PRODUCTS" description="COM_WEBSOURCEPREORDER_SET_BLK_PRODUCTS_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="blk_form" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_BLK_FORM" description="COM_WEBSOURCEPREORDER_SET_BLK_FORM_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="blk_max" type="number" label="COM_WEBSOURCEPREORDER_SET_BLK_MAX" description="COM_WEBSOURCEPREORDER_SET_BLK_MAX_DESC" default="3" min="1" max="12" step="1" filter="integer" />
+		<field name="blk_title" type="text" label="COM_WEBSOURCEPREORDER_SET_BLK_TITLE" description="COM_WEBSOURCEPREORDER_SET_BLK_TITLE_DESC" default="" filter="string" />
+	</fieldset>
+	<fieldset name="list" label="COM_WEBSOURCEPREORDER_TAB_LIST">
+		<field name="list_title" type="text" label="COM_WEBSOURCEPREORDER_SET_LIST_TITLE" description="COM_WEBSOURCEPREORDER_SET_LIST_TITLE_DESC" default="" filter="string" />
+		<field name="list_intro" type="textarea" label="COM_WEBSOURCEPREORDER_SET_LIST_INTRO" description="COM_WEBSOURCEPREORDER_SET_LIST_INTRO_DESC" default="" rows="3" filter="JComponentHelper::filterText" />
+		<field name="list_group_month" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_LIST_GROUP_MONTH" description="COM_WEBSOURCEPREORDER_SET_LIST_GROUP_MONTH_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="list_show_price" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_LIST_SHOW_PRICE" description="COM_WEBSOURCEPREORDER_SET_LIST_SHOW_PRICE_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="list_show_countdown" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_LIST_SHOW_COUNTDOWN" description="COM_WEBSOURCEPREORDER_SET_LIST_SHOW_COUNTDOWN_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="list_empty" type="text" label="COM_WEBSOURCEPREORDER_SET_LIST_EMPTY" description="COM_WEBSOURCEPREORDER_SET_LIST_EMPTY_DESC" default="" filter="string" />
+	</fieldset>
+	<fieldset name="alerts" label="COM_WEBSOURCEPREORDER_TAB_ALERTS">
+		<field name="sub_doubleoptin" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_SUB_DOUBLEOPTIN" description="COM_WEBSOURCEPREORDER_SET_SUB_DOUBLEOPTIN_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="sub_title" type="text" label="COM_WEBSOURCEPREORDER_SET_SUB_TITLE" description="COM_WEBSOURCEPREORDER_SET_SUB_TITLE_DESC" default="" filter="string" />
+		<field name="sub_text" type="textarea" label="COM_WEBSOURCEPREORDER_SET_SUB_TEXT" description="COM_WEBSOURCEPREORDER_SET_SUB_TEXT_DESC" default="" rows="2" filter="string" />
+		<field name="sub_consent" type="textarea" label="COM_WEBSOURCEPREORDER_SET_SUB_CONSENT" description="COM_WEBSOURCEPREORDER_SET_SUB_CONSENT_DESC" default="" rows="2" filter="JComponentHelper::filterText" />
+		<field name="sub_min_delay" type="number" label="COM_WEBSOURCEPREORDER_SET_SUB_MIN_DELAY" description="COM_WEBSOURCEPREORDER_SET_SUB_MIN_DELAY_DESC" default="3" min="0" max="60" step="1" filter="integer" />
+		<field name="sub_rate_max" type="number" label="COM_WEBSOURCEPREORDER_SET_SUB_RATE_MAX" description="COM_WEBSOURCEPREORDER_SET_SUB_RATE_MAX_DESC" default="5" min="1" max="100" step="1" filter="integer" />
+		<field name="sub_product" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_SUB_PRODUCT" description="COM_WEBSOURCEPREORDER_SET_SUB_PRODUCT_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+	<fieldset name="cron" label="COM_WEBSOURCEPREORDER_TAB_CRON">
+		<field name="digest_on" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_SET_DIGEST_ON" description="COM_WEBSOURCEPREORDER_SET_DIGEST_ON_DESC" default="0" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="digest_times" type="number" label="COM_WEBSOURCEPREORDER_SET_DIGEST_TIMES" description="COM_WEBSOURCEPREORDER_SET_DIGEST_TIMES_DESC" default="1" min="1" max="48" step="1" filter="integer" />
+		<field name="digest_freq" type="list" label="COM_WEBSOURCEPREORDER_SET_DIGEST_FREQ" description="COM_WEBSOURCEPREORDER_SET_DIGEST_FREQ_DESC" default="week">
+			<option value="day">COM_WEBSOURCEPREORDER_OPT_DIGEST_FREQ_DAY</option>
+			<option value="week">COM_WEBSOURCEPREORDER_OPT_DIGEST_FREQ_WEEK</option>
+			<option value="month">COM_WEBSOURCEPREORDER_OPT_DIGEST_FREQ_MONTH</option>
+		</field>
+		<field name="digest_mode" type="list" label="COM_WEBSOURCEPREORDER_SET_DIGEST_MODE" description="COM_WEBSOURCEPREORDER_SET_DIGEST_MODE_DESC" default="all">
+			<option value="all">COM_WEBSOURCEPREORDER_OPT_DIGEST_MODE_ALL</option>
+			<option value="new">COM_WEBSOURCEPREORDER_OPT_DIGEST_MODE_NEW</option>
+		</field>
+		<field name="digest_max" type="number" label="COM_WEBSOURCEPREORDER_SET_DIGEST_MAX" description="COM_WEBSOURCEPREORDER_SET_DIGEST_MAX_DESC" default="10" min="0" max="50" step="1" filter="integer" />
+		<field name="digest_batch" type="number" label="COM_WEBSOURCEPREORDER_SET_DIGEST_BATCH" description="COM_WEBSOURCEPREORDER_SET_DIGEST_BATCH_DESC" default="300" min="1" max="5000" step="1" filter="integer" />
+		<field name="cron_token" type="text" label="COM_WEBSOURCEPREORDER_SET_CRON_TOKEN" description="COM_WEBSOURCEPREORDER_SET_CRON_TOKEN_DESC" default="" readonly="true" />
+	</fieldset>
+</form>

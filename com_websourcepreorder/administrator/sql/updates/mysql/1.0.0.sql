@@ -1,0 +1,1 @@
+-- Mises à jour du schéma : ajoutez ici un fichier par version (ex. 1.1.0.sql).

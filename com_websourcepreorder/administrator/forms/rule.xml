@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="Websource\Component\Websourcepreorder\Administrator\Field">
+	<fieldset name="general">
+		<field name="id" type="hidden" default="0" />
+		<field name="product_id" type="product" label="COM_WEBSOURCEPREORDER_FIELD_PRODUCT" description="COM_WEBSOURCEPREORDER_FIELD_PRODUCT_DESC" required="true" />
+		<field name="published" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_FIELD_ACTIVE" description="COM_WEBSOURCEPREORDER_FIELD_ACTIVE_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="date_start" type="calendar" label="COM_WEBSOURCEPREORDER_FIELD_DATE_START" description="COM_WEBSOURCEPREORDER_FIELD_DATE_START_DESC" translateformat="true" showtime="true" singleheader="false" filter="user_utc" />
+		<field name="date_release" type="calendar" label="COM_WEBSOURCEPREORDER_FIELD_DATE_RELEASE" description="COM_WEBSOURCEPREORDER_FIELD_DATE_RELEASE_DESC" translateformat="true" showtime="true" singleheader="false" filter="user_utc" />
+		<field name="end_on_release" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_FIELD_END_ON_RELEASE" description="COM_WEBSOURCEPREORDER_FIELD_END_ON_RELEASE_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="date_end" type="calendar" label="COM_WEBSOURCEPREORDER_FIELD_DATE_END" description="COM_WEBSOURCEPREORDER_FIELD_DATE_END_DESC" translateformat="true" showtime="true" singleheader="false" filter="user_utc" />
+	</fieldset>
+
+	<fieldset name="pricing">
+		<field name="price_mode" type="list" label="COM_WEBSOURCEPREORDER_FIELD_PRICE_MODE" description="COM_WEBSOURCEPREORDER_FIELD_PRICE_MODE_DESC" default="0" filter="integer">
+			<option value="0">COM_WEBSOURCEPREORDER_PRICE_MODE_0</option>
+			<option value="1">COM_WEBSOURCEPREORDER_PRICE_MODE_1</option>
+			<option value="2">COM_WEBSOURCEPREORDER_PRICE_MODE_2</option>
+			<option value="3">COM_WEBSOURCEPREORDER_PRICE_MODE_3</option>
+		</field>
+		<field name="price_value" type="number" label="COM_WEBSOURCEPREORDER_FIELD_PRICE_VALUE" description="COM_WEBSOURCEPREORDER_FIELD_PRICE_VALUE_DESC" default="0" min="0" step="0.01" filter="float" showon="price_mode!:0" />
+		<field name="quota" type="number" label="COM_WEBSOURCEPREORDER_FIELD_QUOTA" description="COM_WEBSOURCEPREORDER_FIELD_QUOTA_DESC" default="0" min="0" step="1" filter="integer" />
+		<field name="max_per_order" type="number" label="COM_WEBSOURCEPREORDER_FIELD_MAX_ORDER" description="COM_WEBSOURCEPREORDER_FIELD_MAX_ORDER_DESC" default="0" min="0" step="1" filter="integer" />
+		<field name="max_per_customer" type="number" label="COM_WEBSOURCEPREORDER_FIELD_MAX_CUSTOMER" description="COM_WEBSOURCEPREORDER_FIELD_MAX_CUSTOMER_DESC" default="0" min="0" step="1" filter="integer" />
+	</fieldset>
+
+	<fieldset name="display">
+		<field name="featured" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_FIELD_FEATURED" description="COM_WEBSOURCEPREORDER_FIELD_FEATURED_DESC" default="0" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="in_ticker" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_FIELD_IN_TICKER" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="in_list" type="radio" layout="joomla.form.field.radio.switcher" label="COM_WEBSOURCEPREORDER_FIELD_IN_LIST" description="COM_WEBSOURCEPREORDER_FIELD_IN_LIST_DESC" default="1" filter="integer">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="label" type="text" label="COM_WEBSOURCEPREORDER_FIELD_LABEL" description="COM_WEBSOURCEPREORDER_FIELD_LABEL_DESC" maxlength="255" filter="string" />
+		<field name="message" type="textarea" label="COM_WEBSOURCEPREORDER_FIELD_MESSAGE" description="COM_WEBSOURCEPREORDER_FIELD_MESSAGE_DESC" rows="4" filter="JComponentHelper::filterText" />
+		<field name="translations" type="subform" label="COM_WEBSOURCEPREORDER_FIELD_TRANSLATIONS" description="COM_WEBSOURCEPREORDER_FIELD_TRANSLATIONS_DESC" multiple="true" min="0" buttons="add,remove">
+			<form>
+				<field name="language" type="contentlanguage" label="JFIELD_LANGUAGE_LABEL" />
+				<field name="label" type="text" label="COM_WEBSOURCEPREORDER_FIELD_LABEL" filter="string" />
+				<field name="message" type="textarea" label="COM_WEBSOURCEPREORDER_FIELD_MESSAGE" rows="3" filter="JComponentHelper::filterText" />
+			</form>
+		</field>
+	</fieldset>
+</form>

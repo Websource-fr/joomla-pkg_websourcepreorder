@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="filter">
+		<field name="search" type="text" inputmode="search" label="JSEARCH_FILTER" hint="JSEARCH_FILTER" />
+		<field name="confirmed" type="list" label="COM_WEBSOURCEPREORDER_FILTER_CONFIRMED" onchange="this.form.submit();">
+			<option value="">COM_WEBSOURCEPREORDER_FILTER_CONFIRMED_ALL</option>
+			<option value="1">COM_WEBSOURCEPREORDER_CONFIRMED_1</option>
+			<option value="0">COM_WEBSOURCEPREORDER_CONFIRMED_0</option>
+		</field>
+	</fields>
+	<fields name="list">
+		<field name="fullordering" type="list" label="JGLOBAL_SORT_BY" default="a.id DESC" onchange="this.form.submit();">
+			<option value="">JGLOBAL_SORT_BY</option>
+			<option value="a.id DESC">JGRID_HEADING_ID_DESC</option>
+			<option value="a.email ASC">COM_WEBSOURCEPREORDER_SORT_EMAIL_ASC</option>
+		</field>
+		<field name="limit" type="limitbox" class="input-mini" default="25" onchange="this.form.submit();" />
+	</fields>
+</form>

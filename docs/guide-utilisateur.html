@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>Websource Précommandes pour Joomla / HikaShop — Guide utilisateur</title>
+<style>
+@page{size:A4;margin:18mm 16mm}
+body{font-family:"DejaVu Sans",Arial,sans-serif;font-size:10.5pt;line-height:1.5;color:#1f2937}
+h1{font-size:26pt;margin:0 0 6pt;color:#e8590c}
+h2{font-size:15pt;margin:22pt 0 6pt;padding-bottom:3pt;border-bottom:2px solid #e8590c;color:#111827;page-break-after:avoid}
+h3{font-size:11.5pt;margin:12pt 0 3pt;color:#111827;page-break-after:avoid}
+.cover{padding:60pt 0 30pt;border-bottom:4px solid #e8590c;margin-bottom:20pt}
+.cover p{font-size:12pt;color:#4b5563}
+table{border-collapse:collapse;width:100%;margin:6pt 0 10pt;page-break-inside:auto}
+tr{page-break-inside:avoid}
+th,td{border:1px solid #d1d5db;padding:4pt 6pt;text-align:left;vertical-align:top;font-size:9.5pt}
+th{background:#fff7ed}
+code{font-family:"DejaVu Sans Mono",monospace;font-size:9pt;background:#f3f4f6;padding:0 3pt;border-radius:2pt}
+pre{background:#f3f4f6;padding:7pt;border-radius:3pt;font-size:8.8pt;white-space:pre-wrap;word-break:break-all}
+.note{background:#eff6ff;border-left:4px solid #3b82f6;padding:6pt 9pt;margin:8pt 0}
+.warn{background:#fef2f2;border-left:4px solid #ef4444;padding:6pt 9pt;margin:8pt 0}
+.toc li{margin:1pt 0}
+ol,ul{margin:3pt 0 6pt 16pt;padding:0}
+.pb{page-break-before:always}
+figure{margin:8pt 0 12pt;text-align:center;page-break-inside:avoid}
+figure img{max-width:100%;border:1px solid #d1d5db}
+figcaption{font-size:8.8pt;color:#6b7280;margin-top:3pt}
+</style></head><body>
+
+<div class="cover">
+<h1>Websource Précommandes</h1>
+<p><strong>Guide utilisateur</strong> — package Joomla version 1.0.0<br>
+Pour HikaShop (version Starter gratuite suffisante) · Joomla 4.4, 5.x et 6.x · PHP 8.1 à 8.5</p>
+<p>Websource · www.websource.fr</p>
+</div>
+
+<h2>Sommaire</h2>
+<ol class="toc">
+<li>Présentation et principe de fonctionnement</li>
+<li>Installation</li>
+<li>Premiers pas en 5 minutes</li>
+<li>Créer une précommande, champ par champ</li>
+<li>Cycle de vie d'une précommande</li>
+<li>Ce que voit le client</li>
+<li>Le compte à rebours</li>
+<li>Couleurs et libellés</li>
+<li>Modules : produit à la une, bandeau défilant, formulaire d'alerte</li>
+<li>Blocs connexion, inscription, mot de passe oublié</li>
+<li>La page « Toutes les précommandes » et « Mes précommandes »</li>
+<li>Alertes e-mail : inscription et abonnés</li>
+<li>Cron, tâche planifiée et récapitulatif périodique</li>
+<li>E-mails personnalisés et variables</li>
+<li>Suivre les réservations</li>
+<li>Compatibilité templates, permissions et personnalisation avancée</li>
+<li>Besoin d'aller plus loin ? (accompagnement Websource)</li>
+<li>Questions fréquentes et dépannage</li>
+<li>Limites connues</li>
+<li>Désinstallation et données</li>
+</ol>
+
+<h2>1. Présentation et principe de fonctionnement</h2>
+<p>Le package permet de vendre un produit <strong>avant sa sortie</strong>. Pour chaque produit HikaShop (ou variante), vous créez une <em>règle de précommande</em> avec une date de sortie. Tant que la règle est <strong>en cours</strong> :</p>
+<ul>
+<li>le produit peut être commandé même si son stock est à zéro (la quantité d'origine est mémorisée puis restaurée à l'identique) ;</li>
+<li>le prix de précommande éventuel est appliqué <em>à la volée</em> par un événement de prix HikaShop : le prix du produit n'est jamais modifié dans la base ;</li>
+<li>le bouton d'achat devient « Précommander », un badge, la date de sortie et un compte à rebours s'affichent ;</li>
+<li>chaque ligne de commande concernée est enregistrée comme <strong>réservation</strong> (écran <em>Réservations</em>).</li>
+</ul>
+<p>À la date de sortie (ou à la fin que vous avez fixée), la règle se <strong>termine</strong> : le prix revient à la normale, la quantité de stock d'origine est restaurée, et chaque client ayant précommandé reçoit l'e-mail « produit disponible ».</p>
+<div class="note">Le package ne gère pas le paiement d'un acompte puis d'un solde : la précommande est payée en totalité à la commande, comme une commande HikaShop classique.</div>
+
+<h2>2. Installation</h2>
+<ol>
+<li>Téléchargez <code>joomla-pkg_websourcepreorder.zip</code> depuis la page Releases du dépôt GitHub.</li>
+<li>Dans l'administration Joomla : <em>Système → Installer → Extensions</em>, déposez le zip. Les six extensions (composant, plugin système, plugin de tâche, trois modules) s'installent <strong>d'un seul coup</strong> et les deux plugins sont activés automatiquement.</li>
+<li>Ouvrez <em>Composants → Websource Précommandes</em> : le tableau de bord s'affiche.</li>
+<li>Planifiez le cron (chapitre 13).</li>
+</ol>
+<div class="note">HikaShop doit être installé. Sans lui, le package s'installe mais reste inactif et un message vous l'indique.</div>
+<figure><img src="img/admin-dashboard.png" alt="Tableau de bord"><figcaption>Tableau de bord : compteurs, prochaines sorties, outils, URL de cron et encart d'accompagnement.</figcaption></figure>
+
+<h2>3. Premiers pas en 5 minutes</h2>
+<ol>
+<li><em>Composants → Websource Précommandes → Précommandes → Nouvelle précommande</em>.</li>
+<li>Tapez le nom du produit dans le champ « Produit HikaShop » et choisissez-le dans la liste.</li>
+<li>Renseignez la <strong>date de sortie</strong>. Laissez le reste par défaut.</li>
+<li>Enregistrez. Le statut passe à <strong>En cours</strong> : ouvrez la fiche produit sur la boutique, le bloc précommande est affiché.</li>
+</ol>
+
+<h2 class="pb">4. Créer une précommande, champ par champ</h2>
+<figure><img src="img/admin-rule-edit.png" alt="Formulaire d'une règle"><figcaption>Onglet « Produit et dates » du formulaire d'une règle.</figcaption></figure>
+<table>
+<tr><th style="width:30%">Champ</th><th>Rôle</th></tr>
+<tr><td>Produit HikaShop</td><td>Produit ou variante concerné. Une règle sur un produit parent s'applique à ses variantes ; une règle sur une variante ne concerne que celle-ci.</td></tr>
+<tr><td>Activée</td><td>Une règle désactivée n'est jamais appliquée.</td></tr>
+<tr><td>Début des précommandes</td><td>Vide = dès l'activation. Sinon la règle reste « Programmée » jusqu'à cette date.</td></tr>
+<tr><td>Date de sortie</td><td>Affichée aux clients, alimente le compte à rebours et la barre de progression. L'e-mail « disponible » part à cette date. Les dates sont saisies dans le fuseau horaire de votre compte et enregistrées en UTC.</td></tr>
+<tr><td>Clore automatiquement à la date de sortie</td><td>Oui (recommandé) : la précommande s'arrête à la sortie. Non : elle continue jusqu'à la fin ou jusqu'à ce que vous la terminiez à la main.</td></tr>
+<tr><td>Fin anticipée</td><td>Optionnel. Clôture anticipée des ventes, indépendante de la sortie.</td></tr>
+<tr><td>Prix de précommande</td><td>Prix normal / Prix fixe HT / Remise en % / Remise en montant HT (devise principale de la boutique).</td></tr>
+<tr><td>Quota total</td><td>Nombre maximal d'unités réservables (0 = illimité). Les commandes annulées ou remboursées libèrent le quota.</td></tr>
+<tr><td>Maximum par commande / par client</td><td>Limites d'achat (0 = illimité). La limite par client s'applique aux clients identifiés (compte HikaShop).</td></tr>
+<tr><td>Mettre à la une</td><td>Le produit est choisi par le module « Précommande à la une ».</td></tr>
+<tr><td>Bandeau / page des précommandes</td><td>Inclut ou non le produit dans le bandeau défilant, la page « Toutes les précommandes », les blocs des pages de comptes et le récapitulatif e-mail.</td></tr>
+<tr><td>Libellé du bouton, message, traductions</td><td>Optionnels. Le libellé remplace le texte global du bouton pour ce produit ; le message s'affiche dans le bloc de la fiche produit (HTML simple). Le sous-formulaire « Traductions » permet un texte par langue.</td></tr>
+</table>
+<figure><img src="img/admin-rule-pricing.png" alt="Prix et limites"><figcaption>Onglet « Prix et limites ».</figcaption></figure>
+<div class="warn">Une seule règle non terminée est autorisée par produit. Le produit doit rester <em>publié</em> dans HikaShop : le package ne force pas ce réglage.</div>
+
+<h2>5. Cycle de vie d'une précommande</h2>
+<table>
+<tr><th style="width:22%">Statut</th><th>Signification</th></tr>
+<tr><td>Programmée</td><td>Désactivée, ou date de début pas encore atteinte. Rien n'est appliqué.</td></tr>
+<tr><td>En cours</td><td>Précommande ouverte : stock, prix, affichage et réservations actifs.</td></tr>
+<tr><td>Terminée</td><td>Date de sortie ou de fin atteinte (ou bouton « Disponible maintenant »). Prix et stock restaurés.</td></tr>
+</table>
+<p>Les changements de statut sont appliqués par la <strong>tâche planifiée / le cron</strong> et, en secours, à la première visite du site après l'échéance (réglage « Synchronisation automatique côté boutique », au plus une fois par minute). Le bouton <em>Disponible maintenant</em> (barre d'outils de la liste des règles) termine la règle immédiatement et prévient les acheteurs. Modifier une règle en cours ré-applique automatiquement le stock avec les nouveaux paramètres ; la supprimer restaure l'état d'origine.</p>
+<figure><img src="img/admin-rules.png" alt="Liste des règles"><figcaption>Liste des règles avec statut, sortie, prix et quota réservé.</figcaption></figure>
+
+<h2 class="pb">6. Ce que voit le client</h2>
+<ul>
+<li><strong>Fiche produit</strong> : bloc coloré avec badge, date de sortie, compte à rebours, barre de progression, message, quantité restante, limites et économie ; bouton « Précommander » (un seul libellé par produit possible).</li>
+<li><strong>Listes de produits</strong> : badge « Précommande » sur les vignettes.</li>
+<li><strong>Panier / commande</strong> : encadré rappelant les articles en précommande et leur date de sortie ; refus clair, avec message, en cas de dépassement de quota ou de limite.</li>
+<li><strong>Compte client</strong> : page « Mes précommandes » (élément de menu) avec le statut de chaque réservation.</li>
+<li><strong>E-mails</strong> : confirmation à la commande, puis « disponible » à la sortie.</li>
+</ul>
+<figure><img src="img/front-product.png" alt="Fiche produit"><figcaption>Fiche produit HikaShop dans Cassiopeia : prix de précommande, bouton renommé, bloc précommande et formulaire d'alerte.</figcaption></figure>
+<p>L'option <em>Panier mixte → Interdire le mélange</em> empêche de combiner précommandes et produits en stock dans un même panier : la ligne ajoutée en dernier est refusée avec un message.</p>
+<figure><img src="img/front-listing.png" alt="Listing"><figcaption>Liste de produits HikaShop : badge « Précommande » et bouton renommé.</figcaption></figure>
+
+<h2>7. Le compte à rebours</h2>
+<p>Réglage : <em>Réglages → Compteur → Unités du compteur</em>.</p>
+<table>
+<tr><th style="width:22%">Mode</th><th>Affichage</th></tr>
+<tr><td>Automatique</td><td>≥ 2 jours : jours + heures ; moins de 2 jours : heures + minutes ; moins d'une heure : minutes + secondes.</td></tr>
+<tr><td>Jours</td><td>Nombre de jours restants uniquement.</td></tr>
+<tr><td>Jours + heures</td><td>Ex. « 12 jours 04 heures ».</td></tr>
+<tr><td>Jours + heures + minutes</td><td>Ex. « 12 jours 04 heures 37 minutes ».</td></tr>
+<tr><td>… + secondes</td><td>Compteur à la seconde.</td></tr>
+</table>
+<p>Le compteur s'appuie sur l'horloge du serveur (pas de décalage dû à l'ordinateur du visiteur). Quand la date est atteinte, il affiche « Disponible ! ». Compteur, barre de progression et quantité restante peuvent être masqués.</p>
+
+<h2>8. Couleurs et libellés</h2>
+<p>L'onglet <em>Couleurs</em> règle neuf couleurs : principale (boutons, liens), texte sur principale, fond et bordure du bloc, fond et texte du compteur, fond du badge, fond et texte du bandeau. Elles sont publiées sous forme de variables CSS (<code>--wspo-accent</code>, <code>--wspo-on-accent</code>, <code>--wspo-box-bg</code>, <code>--wspo-border</code>, <code>--wspo-count-bg</code>, <code>--wspo-count-text</code>, <code>--wspo-badge-bg</code>, <code>--wspo-ticker-bg</code>, <code>--wspo-ticker-text</code>). L'onglet <em>Général</em> règle le texte du bouton et du badge (vide = traduction fournie ; surchargeable avec les « Remplacements de langue » de Joomla).</p>
+<figure><img src="img/admin-settings-colors.png" alt="Couleurs"><figcaption>Onglet « Couleurs ».</figcaption></figure>
+
+<h2>9. Modules : produit à la une, bandeau défilant, formulaire d'alerte</h2>
+<p>Dans <em>Contenu → Modules du site → Nouveau</em>, choisissez l'un des trois modules Websource, une <strong>position</strong> de votre template et l'affectation aux pages.</p>
+<ul>
+<li><strong>Websource Précommande à la une</strong> : un produit (image, date, compteur, progression, prix, bouton). Il prend le produit « mis à la une » ; sinon, option, la précommande qui sort le plus tôt. Placez-le sur l'accueil.</li>
+<li><strong>Websource Bandeau des précommandes</strong> : produits qui défilent. Réglez le préfixe, le nombre maximum de produits, la durée du cycle et « accueil uniquement ». Le défilement se met en pause au survol et s'arrête pour les visiteurs qui ont réduit les animations (<code>prefers-reduced-motion</code>).</li>
+<li><strong>Websource Alerte précommandes</strong> : formulaire d'inscription aux alertes e-mail. Placez-le en pied de page, sur l'accueil, sur les fiches produit ou dans les colonnes de gauche / droite (positions du template). Le champ « Emplacement » adapte la mise en forme et alimente la colonne « Source » de la liste des abonnés.</li>
+</ul>
+<figure><img src="img/front-home.png" alt="Accueil"><figcaption>Accueil : bandeau en position top-a, produit à la une en main-top, formulaire d'alerte en footer.</figcaption></figure>
+<p>Les valeurs par défaut (titre, vitesse, nombre de produits) se règlent dans l'onglet <em>Accueil &amp; bandeau</em> ; chaque module peut les surcharger.</p>
+
+<h2 class="pb">10. Blocs connexion, inscription, mot de passe oublié</h2>
+<p>Dans l'onglet <em>Blocs comptes</em>, activez au choix la page de connexion, d'inscription et de mot de passe / identifiant oublié de Joomla (<code>com_users</code>). Le bloc contient un titre, les prochains produits en précommande (nombre réglable) et, si vous le souhaitez, le formulaire d'alerte. Aucun module n'est nécessaire : le plugin système ajoute le bloc après le formulaire.</p>
+<figure><img src="img/front-register.png" alt="Inscription"><figcaption>Page d'inscription avec le bloc des prochaines précommandes.</figcaption></figure>
+
+<h2>11. La page « Toutes les précommandes » et « Mes précommandes »</h2>
+<p>Créez des éléments de menu : <em>Menus → Nouvel élément</em>, type <em>Websource Précommandes → Toutes les précommandes</em> (page publique, groupée par mois de sortie) et <em>Mes précommandes</em> (réservations du client connecté ; un visiteur est renvoyé vers la connexion). Titre, introduction, regroupement par mois, prix et compteur se règlent dans l'onglet <em>Page liste</em>.</p>
+<figure><img src="img/front-list.png" alt="Page liste"><figcaption>Page « Toutes les précommandes ».</figcaption></figure>
+
+<h2>12. Alertes e-mail : inscription et abonnés</h2>
+<ul>
+<li><strong>Double opt-in</strong> (recommandé) : l'abonné reçoit un e-mail de confirmation et n'est activé qu'après clic sur le lien.</li>
+<li><strong>RGPD</strong> : case de consentement obligatoire, texte personnalisable.</li>
+<li><strong>Anti-spam</strong> : jeton CSRF Joomla, champ piège invisible, délai minimal avant envoi (3 s par défaut), limite par adresse IP et par heure (5 par défaut).</li>
+<li><strong>Désinscription</strong> en un clic via le lien présent dans chaque récapitulatif.</li>
+<li><em>Abonnés aux alertes</em> : liste, filtre, ajout manuel (uniquement avec consentement), confirmation, suppression, export CSV.</li>
+</ul>
+<figure><img src="img/admin-subscribers.png" alt="Abonnés"><figcaption>Écran « Abonnés aux alertes ».</figcaption></figure>
+
+<h2>13. Cron, tâche planifiée et récapitulatif périodique</h2>
+<p>La synchronisation (1) ouvre et clôt les précommandes, (2) prévient les acheteurs à la sortie, (3) envoie le récapitulatif aux abonnés. Deux solutions, au choix (ou les deux) :</p>
+<h3>a) Tâche planifiée Joomla (4.1+)</h3>
+<p><em>Système → Tâches planifiées → Nouveau</em>, types « Précommandes : synchroniser » et « Précommandes : récapitulatif périodique », fréquence de 15 minutes à 1 heure. Les tâches s'exécutent via le planificateur de Joomla (déclenchement paresseux par les visites, ou cron serveur <code>php cli/joomla.php scheduler:run</code>).</p>
+<div class="note">Exécutées en ligne de commande, les tâches ne connaissent pas l'adresse du site : renseignez <em>Réglages → Général → URL publique du site</em> (ou <code>live_site</code> dans <code>configuration.php</code>) pour que les liens des e-mails soient corrects.</div>
+<h3>b) URL de cron sécurisée par jeton</h3>
+<p>L'adresse exacte, avec votre jeton secret, est affichée dans <em>Réglages → Cron &amp; récapitulatif</em> et sur le tableau de bord :</p>
+<pre>*/15 * * * * curl -fsSL "https://votre-site.tld/?option=com_websourcepreorder&amp;task=cron.run&amp;token=VOTRE_JETON" &gt; /dev/null</pre>
+<p>Ajoutez <code>&amp;action=sync</code> ou <code>&amp;action=digest</code> pour limiter l'action. Un jeton incorrect renvoie une erreur 403. Le bouton « Régénérer le jeton » invalide l'ancienne adresse.</p>
+<figure><img src="img/admin-settings-cron.png" alt="Cron"><figcaption>Onglet « Cron &amp; récapitulatif ».</figcaption></figure>
+<h3>Fréquence du récapitulatif</h3>
+<p>Choisissez la <strong>période</strong> (jour, semaine, mois) et le <strong>nombre d'envois par période</strong> : « 2 par jour » = un envoi toutes les 12 heures ; « 1 par semaine » = tous les 7 jours. Le <strong>contenu</strong> peut être « toutes les précommandes ouvertes » ou « seulement les nouveautés » depuis le dernier envoi. Rien n'est envoyé s'il n'y a rien à présenter. Le bouton <em>Envoyer le récapitulatif maintenant</em> (tableau de bord) force un envoi à tous les abonnés confirmés. Les envois sont faits par lots (300 par passage par défaut) et reprennent automatiquement là où ils se sont arrêtés.</p>
+
+<h2 class="pb">14. E-mails personnalisés et variables</h2>
+<p>L'onglet <em>E-mails</em> permet de modifier, pour chaque langue, l'objet et le contenu HTML de cinq e-mails. Un champ vide rétablit le texte par défaut. Les trois premiers peuvent être désactivés dans l'onglet Général. Le contenu est inséré dans une enveloppe HTML aux couleurs de votre site (nom du site, couleur principale). <em>Envoyer un test</em> envoie l'e-mail affiché avec des valeurs d'exemple (à l'adresse saisie, sinon la vôtre).</p>
+<figure><img src="img/admin-settings-emails.png" alt="E-mails"><figcaption>Onglet « E-mails » : type, langue, objet, corps HTML, variables et test.</figcaption></figure>
+<table>
+<tr><th style="width:30%">E-mail</th><th>Variables disponibles</th></tr>
+<tr><td>Confirmation de précommande (client)</td><td><code>{firstname}</code> <code>{lastname}</code> <code>{order_reference}</code> <code>{products_html}</code> <code>{release_info}</code> <code>{shop_name}</code> <code>{shop_url}</code> <code>{account_url}</code></td></tr>
+<tr><td>Produit disponible (client)</td><td><code>{firstname}</code> <code>{lastname}</code> <code>{order_reference}</code> <code>{product_name}</code> <code>{product_url}</code> <code>{release_date}</code> <code>{shop_name}</code> <code>{shop_url}</code> <code>{account_url}</code></td></tr>
+<tr><td>Alerte nouvelle précommande (administrateur)</td><td><code>{customer}</code> <code>{customer_email}</code> <code>{order_reference}</code> <code>{products_html}</code> <code>{shop_name}</code></td></tr>
+<tr><td>Confirmation d'inscription (double opt-in)</td><td><code>{confirm_url}</code> <code>{shop_name}</code> <code>{shop_url}</code></td></tr>
+<tr><td>Récapitulatif périodique</td><td><code>{products_html}</code> <code>{count}</code> <code>{unsubscribe_url}</code> <code>{list_url}</code> <code>{shop_name}</code> <code>{shop_url}</code></td></tr>
+</table>
+<div class="note">Conservez toujours <code>{unsubscribe_url}</code> dans le récapitulatif : le lien de désinscription est une obligation légale pour tout e-mail récurrent. Les valeurs sont échappées automatiquement (sauf <code>{products_html}</code>, déjà du HTML sûr).</div>
+
+<h2>15. Suivre les réservations</h2>
+<p>L'écran <em>Réservations</em> liste chaque ligne de commande en précommande : commande, client, produit, quantité, date de sortie et statut (Réservée, Client prévenu, Annulée). Filtres par recherche, statut et règle. Actions : <em>Renvoyer l'e-mail</em>, <em>Annuler la réservation</em> (libère le quota), <em>Rétablir</em>, <em>Export CSV</em>.</p>
+<figure><img src="img/admin-bookings.png" alt="Réservations"><figcaption>Écran « Réservations ».</figcaption></figure>
+<p>Une réservation est créée à la <strong>création de la commande</strong> HikaShop (statut « created » compris). Le passage d'une commande aux statuts <code>cancelled</code> ou <code>refunded</code> (liste modifiable dans Réglages → Général) annule la réservation et libère le quota ; le retour vers un autre statut la réactive. Pour ne pas bloquer du quota avec des commandes jamais payées, le réglage <em>Libérer les commandes non payées après (heures)</em> libère automatiquement les réservations dont la commande est restée « created ».</p>
+
+<h2>16. Compatibilité templates, permissions et personnalisation avancée</h2>
+<p>Le package est conçu pour Cassiopeia et s'adapte aux templates standards. Pour modifier le rendu sans toucher au package, copiez un layout vers votre template :</p>
+<pre>components/com_websourcepreorder/layouts/box.php
+  → templates/VOTRE_TEMPLATE/html/layouts/com_websourcepreorder/box.php</pre>
+<p>Layouts : <code>box</code> (fiche produit), <code>card</code> (page liste), <code>subscribe</code>, <code>account_block</code>, <code>cart_notice</code>. Modules : <code>templates/…/html/mod_websourcepreorder_*/default.php</code>. Les couleurs sont des variables CSS surchargeables dans la feuille de style du template.</p>
+<h3>Permissions (ACL)</h3>
+<p>Dans <em>Composants → Websource Précommandes → Paramètres → Permissions</em> : <code>core.manage</code> (accéder au composant), <code>core.create</code>, <code>core.edit</code> (réservations, abonnés), <code>core.edit.state</code> (activer, « Disponible maintenant »), <code>core.delete</code>, <code>core.admin</code> (réglages, jeton de cron). Toutes les actions utilisent les jetons CSRF Joomla, les entrées sont filtrées, les requêtes SQL sont préparées et les sorties échappées.</p>
+<h3>Réglages généraux</h3>
+<figure><img src="img/admin-settings-general.png" alt="Réglages généraux"><figcaption>Onglet « Général ».</figcaption></figure>
+
+<h2>17. Besoin d'aller plus loin ? (accompagnement Websource)</h2>
+<div class="note">Le tableau de bord du composant affiche, aux seuls utilisateurs de l'administration disposant de <code>core.admin</code> ou <code>core.manage</code> sur le composant, un encart « Besoin d'aller plus loin ? » : Websource, éditeur de l'extension, peut vous accompagner (personnalisation sur mesure, adaptation à votre template, développements spécifiques). Deux boutons mènent à www.websource.fr/contact (contact et prise de rendez-vous). L'encart n'apparaît jamais en front ni dans les e-mails, il se masque 30 jours en un clic (mémorisé dans le navigateur, sans requête externe). Seul un clic sur les boutons transmet à Websource le nom et la version de l'extension, la version de Joomla et l'adresse de votre site (paramètres <code>utm_*</code> et <code>ws_*</code> de l'URL), ce qui est rappelé en petit sous les boutons. Le code est un layout unique et réutilisable : <code>administrator/layouts/websource_support.php</code>.</div>
+
+<h2>18. Questions fréquentes et dépannage</h2>
+<table>
+<tr><th style="width:36%">Problème</th><th>Piste</th></tr>
+<tr><td>Le bloc n'apparaît pas sur la fiche produit</td><td>Vérifiez que la règle est « En cours » et que le plugin système « Websource Précommandes » est activé. Videz le cache Joomla (et le cache de page éventuel).</td></tr>
+<tr><td>Le bouton reste « Ajouter au panier »</td><td>Le template ou une vue HikaShop personnalisée n'utilise pas le bouton standard (attribut <code>data-addtocart</code>) : contactez-nous avec le nom du template.</td></tr>
+<tr><td>Le bandeau ou le module n'apparaît pas</td><td>Vérifiez la position du module (elle doit exister dans votre template), l'affectation aux pages, le statut publié, et qu'une précommande est en cours.</td></tr>
+<tr><td>Le client ne peut pas ajouter au panier</td><td>Quota atteint, limite par commande/client, ou « panier mixte » interdit. Un message explicite est affiché.</td></tr>
+<tr><td>Le statut ne change pas à la date de sortie</td><td>Ni cron, ni tâche planifiée : sans eux, le changement a lieu à la prochaine visite du site (réglage « Synchronisation automatique »).</td></tr>
+<tr><td>Le prix de précommande ne s'applique pas</td><td>Vérifiez que la règle est « En cours » et que le mode de prix n'est pas « Prix normal ». Un plugin tiers qui réécrit les prix après le nôtre peut le masquer.</td></tr>
+<tr><td>Aucun e-mail reçu</td><td>Utilisez « Envoyer un test » et vérifiez <em>Configuration globale → Serveur → E-mail</em>. Les erreurs d'envoi sont écrites dans <code>administrator/logs/websourcepreorder.php</code>.</td></tr>
+<tr><td>Liens des e-mails en <code>localhost</code> ou sans domaine</td><td>E-mails envoyés en ligne de commande : renseignez « URL publique du site » dans les réglages.</td></tr>
+<tr><td>L'URL de cron répond 403</td><td>Jeton incorrect ou régénéré : recopiez l'adresse affichée dans Réglages → Cron.</td></tr>
+</table>
+
+<h2>19. Limites connues</h2>
+<ul>
+<li>Le prix « Remise en montant » et le « Prix fixe » sont exprimés dans la devise principale de HikaShop ; les autres devises sont converties par HikaShop.</li>
+<li>La remise de précommande est une modification de prix à la volée : elle n'apparaît pas comme une remise barrée dans les vues HikaShop (le bloc de la fiche indique le pourcentage d'économie).</li>
+<li>Pendant la précommande la quantité HikaShop est mise à « illimitée » : le stock n'est pas décompté. À la clôture, la valeur d'origine est restaurée.</li>
+<li>Le module de détection de variantes s'appuie sur les produits HikaShop de type « variant » ; la règle d'un produit parent couvre toutes ses variantes.</li>
+<li>Le lien « Mes précommandes » n'est pas injecté automatiquement dans l'espace compte HikaShop : ajoutez l'élément de menu correspondant.</li>
+<li>Testé avec HikaShop Starter ; les extensions HikaShop Business/Enterprise qui remplacent le calcul de prix n'ont pas été testées.</li>
+<li>Tâches planifiées : validées sur Joomla 5.4 et 6.1 (commande <code>scheduler:run</code>). Sur Joomla 4.4, la commande CLI du planificateur échouait dans notre environnement de test indépendamment du package : utilisez l'URL de cron ou le planificateur web.</li>
+<li>Compatibilité Joomla 4.4 et 6.1 : parcours principaux validés (installation, règles, prix, limites, commande, réservation, administration, e-mails) ; les tests exhaustifs (alertes, récapitulatifs, modules, blocs de comptes, désinstallation) ont été menés sur Joomla 5.4.</li>
+</ul>
+
+<h2>20. Désinstallation et données</h2>
+<p>À la désinstallation du package (<em>Système → Gérer → Extensions</em>, type « Package »), les précommandes en cours sont terminées proprement : la quantité de stock d'origine est restaurée. Par défaut, vos règles, réservations, abonnés et modèles d'e-mails sont <strong>conservés</strong> (réglage <em>Conserver les données à la désinstallation</em>) ; désactivez-le avant de désinstaller pour tout supprimer. Les paramètres du composant sont retirés avec lui.</p>
+
+<p style="margin-top:24pt;color:#6b7280;font-size:9pt">Websource Précommandes 1.0.0 pour Joomla — © Websource — www.websource.fr — Usage libre non commercial, voir le fichier LICENSE.</p>
+</body></html>

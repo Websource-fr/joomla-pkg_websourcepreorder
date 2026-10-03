@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>MOD_WEBSOURCEPREORDER_FEATURED</name>
+	<author>Websource</author>
+	<creationDate>2026-10-03</creationDate>
+	<copyright>Copyright (C) 2026 Websource. Tous droits réservés.</copyright>
+	<license>Licence Websource, usage libre non commercial (voir LICENSE)</license>
+	<authorEmail>contact@websource.fr</authorEmail>
+	<authorUrl>https://www.websource.fr</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_WEBSOURCEPREORDER_FEATURED_XML_DESCRIPTION</description>
+	<namespace path="src">Websource\Module\PreorderFeatured</namespace>
+	<files>
+		<folder module="mod_websourcepreorder_featured">services</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+	<languages>
+		<language tag="fr-FR">language/fr-FR/mod_websourcepreorder_featured.ini</language>
+		<language tag="fr-FR">language/fr-FR/mod_websourcepreorder_featured.sys.ini</language>
+		<language tag="en-GB">language/en-GB/mod_websourcepreorder_featured.ini</language>
+		<language tag="en-GB">language/en-GB/mod_websourcepreorder_featured.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="title" type="text" label="MOD_WEBSOURCEPREORDER_FEATURED_FIELD_TITLE" description="MOD_WEBSOURCEPREORDER_FEATURED_FIELD_TITLE_DESC" filter="string" />
+				<field name="fallback" type="radio" layout="joomla.form.field.radio.switcher" label="MOD_WEBSOURCEPREORDER_FEATURED_FIELD_FALLBACK" description="MOD_WEBSOURCEPREORDER_FEATURED_FIELD_FALLBACK_DESC" default="1" filter="integer">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="show_subscribe" type="radio" layout="joomla.form.field.radio.switcher" label="MOD_WEBSOURCEPREORDER_FEATURED_FIELD_SUB" description="MOD_WEBSOURCEPREORDER_FEATURED_FIELD_SUB_DESC" default="0" filter="integer">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" class="form-select" validate="options" />
+				<field name="moduleclass_sfx" type="textarea" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" rows="1" validate="CssIdentifier" />
+				<field name="cache" type="list" label="COM_MODULES_FIELD_CACHING_LABEL" default="0" filter="integer" validate="options">
+					<option value="1">COM_MODULES_FIELD_VALUE_USECACHE</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

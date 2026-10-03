@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" method="upgrade">
+	<name>COM_WEBSOURCEPREORDER</name>
+	<author>Websource</author>
+	<creationDate>2026-10-03</creationDate>
+	<copyright>Copyright (C) 2026 Websource. Tous droits réservés.</copyright>
+	<license>Licence Websource, usage libre non commercial (voir LICENSE)</license>
+	<authorEmail>contact@websource.fr</authorEmail>
+	<authorUrl>https://www.websource.fr</authorUrl>
+	<version>1.0.0</version>
+	<description>COM_WEBSOURCEPREORDER_XML_DESCRIPTION</description>
+	<namespace path="src">Websource\Component\Websourcepreorder</namespace>
+	<scriptfile>script.php</scriptfile>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+	<files folder="site">
+		<folder>language</folder>
+		<folder>layouts</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+	</files>
+	<languages folder="site">
+		<language tag="fr-FR">language/fr-FR/fr-FR.com_websourcepreorder.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.com_websourcepreorder.ini</language>
+	</languages>
+
+	<media destination="com_websourcepreorder" folder="media">
+		<folder>css</folder>
+		<folder>js</folder>
+		<filename>joomla.asset.json</filename>
+	</media>
+
+	<administration>
+		<menu img="class:clock">COM_WEBSOURCEPREORDER</menu>
+		<submenu>
+			<menu link="option=com_websourcepreorder&amp;view=dashboard" view="dashboard">COM_WEBSOURCEPREORDER_SUBMENU_DASHBOARD</menu>
+			<menu link="option=com_websourcepreorder&amp;view=rules" view="rules">COM_WEBSOURCEPREORDER_SUBMENU_RULES</menu>
+			<menu link="option=com_websourcepreorder&amp;view=bookings" view="bookings">COM_WEBSOURCEPREORDER_SUBMENU_BOOKINGS</menu>
+			<menu link="option=com_websourcepreorder&amp;view=subscribers" view="subscribers">COM_WEBSOURCEPREORDER_SUBMENU_SUBSCRIBERS</menu>
+			<menu link="option=com_websourcepreorder&amp;view=settings" view="settings">COM_WEBSOURCEPREORDER_SUBMENU_SETTINGS</menu>
+		</submenu>
+		<files folder="administrator">
+			<filename>access.xml</filename>
+			<folder>forms</folder>
+			<folder>language</folder>
+			<folder>layouts</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+		</files>
+		<languages folder="administrator">
+			<language tag="fr-FR">language/fr-FR/fr-FR.com_websourcepreorder.ini</language>
+			<language tag="fr-FR">language/fr-FR/fr-FR.com_websourcepreorder.sys.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_websourcepreorder.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_websourcepreorder.sys.ini</language>
+		</languages>
+	</administration>
+</extension>

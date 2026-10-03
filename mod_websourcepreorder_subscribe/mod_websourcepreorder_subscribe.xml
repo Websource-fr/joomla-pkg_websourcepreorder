@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>MOD_WEBSOURCEPREORDER_SUBSCRIBE</name>
+	<author>Websource</author>
+	<creationDate>2026-10-03</creationDate>
+	<copyright>Copyright (C) 2026 Websource. Tous droits réservés.</copyright>
+	<license>Licence Websource, usage libre non commercial (voir LICENSE)</license>
+	<authorEmail>contact@websource.fr</authorEmail>
+	<authorUrl>https://www.websource.fr</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_WEBSOURCEPREORDER_SUBSCRIBE_XML_DESCRIPTION</description>
+	<namespace path="src">Websource\Module\PreorderSubscribe</namespace>
+	<files>
+		<folder module="mod_websourcepreorder_subscribe">services</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+	<languages>
+		<language tag="fr-FR">language/fr-FR/mod_websourcepreorder_subscribe.ini</language>
+		<language tag="fr-FR">language/fr-FR/mod_websourcepreorder_subscribe.sys.ini</language>
+		<language tag="en-GB">language/en-GB/mod_websourcepreorder_subscribe.ini</language>
+		<language tag="en-GB">language/en-GB/mod_websourcepreorder_subscribe.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="place" type="list" label="MOD_WEBSOURCEPREORDER_SUBSCRIBE_FIELD_PLACE" description="MOD_WEBSOURCEPREORDER_SUBSCRIBE_FIELD_PLACE_DESC" default="footer">
+					<option value="footer">MOD_WEBSOURCEPREORDER_SUBSCRIBE_PLACE_FOOTER</option>
+					<option value="home">MOD_WEBSOURCEPREORDER_SUBSCRIBE_PLACE_HOME</option>
+					<option value="product">MOD_WEBSOURCEPREORDER_SUBSCRIBE_PLACE_PRODUCT</option>
+					<option value="column-left">MOD_WEBSOURCEPREORDER_SUBSCRIBE_PLACE_COLUMN_LEFT</option>
+					<option value="column-right">MOD_WEBSOURCEPREORDER_SUBSCRIBE_PLACE_COLUMN_RIGHT</option>
+				</field>
+				<field name="title" type="text" label="MOD_WEBSOURCEPREORDER_SUBSCRIBE_FIELD_TITLE" description="MOD_WEBSOURCEPREORDER_SUBSCRIBE_FIELD_TITLE_DESC" filter="string" />
+				<field name="text" type="textarea" rows="2" label="MOD_WEBSOURCEPREORDER_SUBSCRIBE_FIELD_TEXT" description="MOD_WEBSOURCEPREORDER_SUBSCRIBE_FIELD_TEXT_DESC" filter="string" />
+				<field name="only_with_preorders" type="radio" layout="joomla.form.field.radio.switcher" label="MOD_WEBSOURCEPREORDER_SUBSCRIBE_FIELD_ONLY" description="MOD_WEBSOURCEPREORDER_SUBSCRIBE_FIELD_ONLY_DESC" default="0" filter="integer">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" class="form-select" validate="options" />
+				<field name="moduleclass_sfx" type="textarea" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" rows="1" validate="CssIdentifier" />
+				<field name="cache" type="list" label="COM_MODULES_FIELD_CACHING_LABEL" default="0" filter="integer" validate="options">
+					<option value="1">COM_MODULES_FIELD_VALUE_USECACHE</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

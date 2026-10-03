@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+	<name>PLG_SYSTEM_WEBSOURCEPREORDER</name>
+	<author>Websource</author>
+	<creationDate>2026-10-03</creationDate>
+	<copyright>Copyright (C) 2026 Websource. Tous droits réservés.</copyright>
+	<license>Licence Websource, usage libre non commercial (voir LICENSE)</license>
+	<authorEmail>contact@websource.fr</authorEmail>
+	<authorUrl>https://www.websource.fr</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_SYSTEM_WEBSOURCEPREORDER_XML_DESCRIPTION</description>
+	<namespace path="src">Websource\Plugin\System\Websourcepreorder</namespace>
+	<files>
+		<folder plugin="websourcepreorder">services</folder>
+		<folder>src</folder>
+		<folder>language</folder>
+	</files>
+	<languages>
+		<language tag="fr-FR">language/fr-FR/plg_system_websourcepreorder.ini</language>
+		<language tag="fr-FR">language/fr-FR/plg_system_websourcepreorder.sys.ini</language>
+		<language tag="en-GB">language/en-GB/plg_system_websourcepreorder.ini</language>
+		<language tag="en-GB">language/en-GB/plg_system_websourcepreorder.sys.ini</language>
+	</languages>
+</extension>

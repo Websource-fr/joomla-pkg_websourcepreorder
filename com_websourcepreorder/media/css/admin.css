@@ -1,0 +1,10 @@
+.wspo-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;margin:1rem 0 1.5rem}
+.wspo-card{display:flex;flex-direction:column;align-items:center;padding:1rem;border:1px solid var(--template-bg-dark-20,#ccd);border-radius:6px;text-decoration:none;background:var(--body-bg,#fff);color:inherit}
+.wspo-card b{font-size:2rem;line-height:1.1;color:#e8590c}
+.wspo-card span{font-size:.85rem;text-align:center}
+.wspo-card:hover{border-color:#e8590c}
+.wspo-dl dt{font-weight:600;margin-top:.6rem}.wspo-dl dd{margin:0}
+.wspo-pp{position:relative;max-width:520px}
+.wspo-pp__results{position:absolute;z-index:20;left:0;right:0;max-height:260px;overflow:auto;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.wspo-pp__results button{text-align:left}
+.wspo-pre{background:#f3f4f6;color:#111;padding:.6rem;border-radius:4px;white-space:pre-wrap;word-break:break-all}

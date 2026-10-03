@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" method="upgrade">
+	<name>PKG_WEBSOURCEPREORDER</name>
+	<packagename>websourcepreorder</packagename>
+	<author>Websource</author>
+	<creationDate>2026-10-03</creationDate>
+	<copyright>Copyright (C) 2026 Websource. Tous droits réservés.</copyright>
+	<license>Licence Websource, usage libre non commercial (voir LICENSE)</license>
+	<authorEmail>contact@websource.fr</authorEmail>
+	<authorUrl>https://www.websource.fr</authorUrl>
+	<version>1.0.0</version>
+	<description>PKG_WEBSOURCEPREORDER_XML_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+
+	<files folder="packages">
+		<file type="component" id="com_websourcepreorder">com_websourcepreorder.zip</file>
+		<file type="plugin" group="system" id="websourcepreorder">plg_system_websourcepreorder.zip</file>
+		<file type="plugin" group="task" id="websourcepreorder">plg_task_websourcepreorder.zip</file>
+		<file type="module" client="site" id="mod_websourcepreorder_featured">mod_websourcepreorder_featured.zip</file>
+		<file type="module" client="site" id="mod_websourcepreorder_ticker">mod_websourcepreorder_ticker.zip</file>
+		<file type="module" client="site" id="mod_websourcepreorder_subscribe">mod_websourcepreorder_subscribe.zip</file>
+	</files>
+
+	<languages folder="language">
+		<language tag="fr-FR">fr-FR/fr-FR.pkg_websourcepreorder.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.pkg_websourcepreorder.sys.ini</language>
+	</languages>
+</extension>

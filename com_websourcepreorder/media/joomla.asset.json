@@ -1,0 +1,13 @@
+{
+	"$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+	"name": "com_websourcepreorder",
+	"version": "1.0.0",
+	"description": "Websource Précommandes",
+	"license": "Websource",
+	"assets": [
+		{ "name": "com_websourcepreorder.front", "type": "style", "uri": "com_websourcepreorder/front.css" },
+		{ "name": "com_websourcepreorder.front", "type": "script", "uri": "com_websourcepreorder/front.js", "attributes": { "defer": true }, "dependencies": ["core"] },
+		{ "name": "com_websourcepreorder.admin", "type": "style", "uri": "com_websourcepreorder/admin.css" },
+		{ "name": "com_websourcepreorder.admin", "type": "script", "uri": "com_websourcepreorder/admin.js", "attributes": { "defer": true } }
+	]
+}
